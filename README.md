@@ -19,3 +19,65 @@ mongodb://root:example@localhost:27017
 **initial user:**
 - email: admin@example.com
 - password: 21e1f4f542d7
+
+## GRAPHQL
+
+#### Posts
+
+```
+query {
+  allPosts {
+    title
+    status
+    author {
+      name
+    }
+    body
+  }
+}
+```
+
+### Users
+
+```
+query {
+  allUsers {
+    name
+    email
+  }
+}
+```
+
+### User by id
+
+```
+query {
+  User(where: { id: "60093547bef8b07308f9daa3" }) {
+    name
+    email
+  }
+}
+```
+
+### Create User 
+
+```
+mutation {
+  createUser(data: { name: "Mike" }) {
+    id
+  }
+}
+```
+
+### Todos 
+
+```
+query {
+    allTodos {
+        description
+        isComplete
+        deadline
+    }
+}
+```
+
