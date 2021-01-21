@@ -69,6 +69,19 @@ mutation {
 }
 ```
 
+### Update User 
+
+```
+mutation {
+  updateUser(id: "60096b7e4e6da87ae5dbdb15", data: { name: "Simon", email:"simon.garfunk@gmail.com", isAdmin: false }) {
+    id
+    name
+    email
+    isAdmin
+  }
+}
+```
+
 ### Todos 
 
 ```
