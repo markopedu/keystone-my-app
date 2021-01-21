@@ -4,6 +4,9 @@ const { Text, Checkbox, Password } = require('@keystonejs/fields');
 const { GraphQLApp } = require('@keystonejs/app-graphql');
 const { AdminUIApp } = require('@keystonejs/app-admin-ui');
 const initialiseData = require('./initial-data');
+const {CalendarDay} = require("@keystonejs/fields");
+const TodoSchema = require('./lists/Todo.js');
+const PostSchema = require('./lists/Post.js');
 
 const { MongooseAdapter: Adapter } = require('@keystonejs/adapter-mongoose');
 const PROJECT_NAME = 'my cool app';
@@ -35,6 +38,7 @@ const userIsAdminOrOwner = auth => {
 
 const access = { userIsAdmin, userOwnsItem, userIsAdminOrOwner };
 
+// USER
 keystone.createList('User', {
   fields: {
     name: { type: Text },
@@ -52,7 +56,7 @@ keystone.createList('User', {
     },
     password: {
       type: Password,
-    },
+    }
   },
   // List-level access controls
   access: {
@@ -63,6 +67,10 @@ keystone.createList('User', {
     auth: true,
   },
 });
+
+keystone.createList('Todo', TodoSchema);
+keystone.createList('Post', PostSchema);
+
 
 const authStrategy = keystone.createAuthStrategy({
   type: PasswordAuthStrategy,
