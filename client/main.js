@@ -1,6 +1,6 @@
 (function () {
 
-    const url = "http://localhost:3000/admin/api";
+    const url = "/admin/api";
     const error = document.getElementById('error');
     const result = document.getElementById('result');
     const errorCb = e => error.innerHTML = JSON.stringify(e);

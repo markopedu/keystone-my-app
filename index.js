@@ -2,6 +2,7 @@ const { Keystone } = require('@keystonejs/keystone');
 const { PasswordAuthStrategy } = require('@keystonejs/auth-password');
 const { GraphQLApp } = require('@keystonejs/app-graphql');
 const { AdminUIApp } = require('@keystonejs/app-admin-ui');
+const { StaticApp } = require('@keystonejs/app-static');
 const initialiseData = require('./initial-data');
 
 const UserSchema = require('./lists/User');
@@ -44,6 +45,11 @@ module.exports = {
       name: PROJECT_NAME,
       enableDefaultRoute: true,
       authStrategy,
+    }),
+    new StaticApp({
+      path: '/',
+      src: 'client',
+      fallback: 'index.html',
     }),
   ],
 };
