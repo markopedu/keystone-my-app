@@ -8,7 +8,7 @@
     document.getElementById('get-users-btn').addEventListener('click', async (e) => {
 
             const query = `query {
-                              User(where: { id: "60093547bef8b07308f9daa3" }) {
+                              allUsers {
                                 name
                                 email
                               }
