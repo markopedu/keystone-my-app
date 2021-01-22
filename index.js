@@ -15,6 +15,12 @@ const adapterConfig = { mongoUri: 'mongodb://root:example@localhost:27017' };
 
 const keystone = new Keystone({
   adapter: new Adapter(adapterConfig),
+  cookie: {
+    secure: process.env.NODE_ENV === 'production', // Default to true in production
+    maxAge: 1000 * 60 * 60 * 24 * 30, // 30 days
+    sameSite: false,
+  },
+  cookieSecret: '3D4BB8E7-7C25-451F-80B6-E0074D44A163',
   onConnect: process.env.CREATE_TABLES !== 'true' && initialiseData,
 });
 
