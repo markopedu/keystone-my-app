@@ -48,7 +48,7 @@ module.exports = {
     }),
     new StaticApp({
       path: '/',
-      src: 'client',
+      src: 'client/react-app/build',
       fallback: 'index.html',
     }),
   ],
